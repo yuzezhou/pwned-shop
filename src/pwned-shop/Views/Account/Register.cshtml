@@ -1,0 +1,105 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <div class="col-md-8 mx-auto">
+        <div class="card login-logout-tab col-md">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link" href='Login'>Sign In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href='Register'>Sign Up</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-10 offset-md-1">
+                            <section>
+                                <div style="padding:30px;">
+                                </div>
+                                <form asp-controller="Account" class="col mx-auto" onsubmit="return ValidateForm()" name="myForm" asp-action="Register" method="POST">
+                                    <div class="col-md-12">
+                                    <p id="error" style="color:red"><b>@ViewData["Error"]</b></p>
+                                    </div>
+                                    <div style="padding:20px "> </div>
+                                    <div style="margin:10px;"><h4>Create a new account</h4></div>
+                                    <div style="padding:10px "> </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="FirstName1">First Name</label>
+                                                <input type="text" class="form-control" id="FirstName1" placeholder="First Name" name="FirstName">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="LastName1">Last Name</label>
+                                                <input type="text" class="form-control" id="LastName1" placeholder="Last Name" name="LastName">
+                                            </div>
+                                        </div>
+                                        <div style="padding:5px "> </div>
+                                        <div class="col-md-12">
+                                            <label for="InputEmail1">Email address</label>
+                                            <input type="email" class="form-control" id="InputEmail1" placeholder="Enter email" name="Email">
+                                        </div>
+
+                                        <div style="padding:10px "> </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="InputPassword1">Password</label>
+                                                    <input type="password" class="form-control" id="InputPassword1" placeholder="Password" name="Password">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="DOB1">Date of birth</label>
+                                                    <input type="date" class="form-control" id="DOB1" placeholder="Date of birth" name="DOB">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="Address1">Address</label>
+                                                    <input type="text" class="form-control" id="Address1" placeholder="Address" name="Address">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-danger btn-block btn-lg">Register</button>
+                                    </div>
+                                </form>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script src="/js/ValidateRegistration.js"></script>
+    <script>
+        $(function () {
+            var current = location.pathname;
+            $('.nav-tabs li a').each(function () {
+                var $this = $(this);
+                if (current.indexOf($this.attr('href')) !== -1) {
+                    $this.addClass('active');
+                }
+            })
+        })
+    </script>
+}

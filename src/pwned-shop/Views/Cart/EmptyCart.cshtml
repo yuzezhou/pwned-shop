@@ -1,0 +1,21 @@
+@{
+    ViewData["Title"] = "Cart";
+}
+
+<div><img src="~/bannerImg/offersbanner.png" style="width:100%;"></div>
+<br>
+<a class="continue-shopping" style="float:right;" asp-area="" asp-controller="Product" asp-action="Index">Continue Shopping</a>
+<br />
+<br />
+<br />
+<br />
+<div class="row">
+    <div class="row">
+        <div class="emptycart">
+            <div><img src="~/bannerImg/emptysc.png" style="height: 100%" /></div>
+            <p class="empty-sc-text" style="margin:20px;">Awww... your shopping cart is currently empty.</p>
+            <br />
+            <div><a asp-area="" asp-controller="Product" asp-action="Index"><input type="button" class="addcart-button" value="GO SHOPPING"></a></div>
+        </div>
+    </div>
+</div>

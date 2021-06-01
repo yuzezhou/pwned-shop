@@ -1,0 +1,88 @@
+/*use PwnedShop;
+CREATE TABLE UserProfile (
+    UserID int IDENTITY(1,1) PRIMARY KEY,
+    FirstName varchar(30) NOT NULL,
+    LastName varchar(30) NOT NULL,
+    PasswordHash varchar(50) NOT NULL,
+	Salt varchar(30) NOT NULL,
+	DOB varchar(10) NOT NULL,
+	Email varchar(40) NOT NULL,
+	BillingAddress varchar(60)
+);
+
+CREATE TABLE RatingESRB (
+    Rating varchar(5) PRIMARY KEY NOT NULL,
+    Description varchar(110) NOT NULL,
+    AgeGroup varchar(5) NOT NULL,);
+
+
+
+CREATE TABLE Orders (
+    OrderID int IDENTITY(1,1) PRIMARY KEY NOT NULL,
+    UserID int NOT NULL,
+    Timestamp varchar(22),
+	CheckoutStatus bit NOT NULL default 0,
+	PromoCode varchar(8)
+);
+
+
+CREATE TABLE [Order Details] (
+    OrderID int not null,
+    ProductID int NOT NULL,
+    ActivationCode varchar(15) not null,
+	GiftTo varchar (40),
+);
+
+CREATE TABLE [User Reviews] (
+    UserID int not null,
+    ProductID int NOT NULL,
+    ReviewDate varchar(10) not null,
+	Review varchar(200) not null,
+	StarsAssigned int not null,
+);
+CREATE TABLE Discount (
+    PromoCode varchar(8) PRIMARY KEY not null,
+    StartDate varchar(10) not null,
+	EndDate varchar(10) not null,
+	Remarks varchar(20),
+	DiscountPercent float not null default 0,
+);
+
+CREATE TABLE Product (
+    ProductID int IDENTITY(1,1) PRIMARY KEY NOT NULL,
+    ProductName varchar(80) NOT NULL,
+    ProductDescription varchar(200) NOT NULL,
+	CategoryTags varchar(60) NOT NULL,
+	Price smallmoney NOT NULL,
+	RatingESRB varchar(5) NOT NULL,
+	ImageURL varchar(80) NOT NULL
+);
+
+
+ALTER TABLE [User Reviews]
+ADD CONSTRAINT PK_PdtReview PRIMARY KEY (userID,productID);
+
+ALTER TABLE [User Reviews]
+ADD FOREIGN KEY (UserID) REFERENCES UserProfile(UserID);
+
+ALTER TABLE [User Reviews]
+ADD FOREIGN KEY (ProductID) REFERENCES Product(ProductID);
+
+ALTER TABLE Product
+ADD FOREIGN KEY (RatingESRB) REFERENCES RatingESRB(Rating);
+
+ALTER TABLE Orders
+ADD FOREIGN KEY (UserID) REFERENCES UserProfile(UserID);
+
+ALTER TABLE [Order Details]
+ADD CONSTRAINT PK_OrderItem PRIMARY KEY (OrderID,activationcode);
+
+ALTER TABLE [Order Details]
+ADD FOREIGN KEY (orderID) REFERENCES orders(orderID);
+
+ALTER TABLE [Order Details]
+ADD FOREIGN KEY (productID) REFERENCES product(productID);
+
+ALTER TABLE Orders
+ADD FOREIGN KEY (Promocode) REFERENCES discount(promocode);
+*/

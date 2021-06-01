@@ -1,0 +1,100 @@
+﻿@{
+    ViewData["Title"] = "Cart";
+
+    var cartList = (List<Cart>)ViewData["cartList"];
+    var totalPrice = cartList.Sum(c => c.Product.UnitPrice * c.Qty * (1 - c.Product.Discount)).ToString("S$ 0.00");
+}
+
+<div><img src="~/bannerImg/offersbanner.png" style="width:100%;"></div>
+<br>
+<a class="continue-shopping" style="float:right;" asp-area="" asp-controller="Product" asp-action="Index">Continue Shopping</a>
+<br />
+<br />
+<h1 class="sc-heading">Shopping Cart</h1>
+<br>
+<div class="container-fluid">
+    <div>
+        <div>
+            <table>
+                <thead class="cart-table-heading-row">
+                    <tr>
+                        <th width="28%">Product Details</th>
+                        <th width="45%"></th>
+                        <th style="text-align:center" width="6%">Price</th>
+                        <th style="text-align:center" width="6%">Quantity</th>
+                        <th style="text-align:center" width="10%">Total</th>
+                        <th width="5%"></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td><div class="cart-body-padding"></div></td>
+                    </tr>
+
+                    @foreach (var item in cartList)
+                    {
+                        <tr class="cart-orderline" style="background-color:#f2f2f2;">
+                            <td class="cart-product-images">
+                                <img src=@item.Product.ImgURL>
+                            </td>
+
+                            <td class="cart-pro-details">
+                                <div style="margin: 0 0 0 15px;">
+                                    <p class="cart-product-name">@item.Product.ProductName</p>
+                                    <p class="cart-product-des">@item.Product.ProductDesc</p>
+                                </div>
+                            </td>
+
+                            @if (item.Product.Discount != 0)
+                            {
+                                <td class="cart-unit-price" style="text-align:center">
+                                    <p class="cart-new-price">@((item.Product.UnitPrice * (1 - item.Product.Discount)).ToString("S$ 0.00"))</p>
+                                    <p class="cart-cancelled-price"><strike>@((item.Product.UnitPrice).ToString("S$ 0.00"))</strike></p>
+                                </td>
+                            }
+
+                            else
+                            {
+                                <td class="cart-unit-price" style="text-align:center">
+                                    @((item.Product.UnitPrice * (1 - item.Product.Discount)).ToString("S$ 0.00"))
+                                </td>
+                            }
+
+                            <td>
+                                <input class="qty" style="text-align:center" min="1" name="" value="@item.Qty" type="number" onkeydown="return false" product-id="@item.ProductId" onchange="updateCart(this)">
+                            </td>
+
+                            <td style="text-align:center" class="cart-subtotal" id="cart-subtotal-@item.ProductId">@((item.Qty * item.Product.UnitPrice * (1-item.Product.Discount) ).ToString("S$ 0.00"))</td>
+
+                            <td>
+                                <form asp-action="RemoveFromCart" asp-controller="Cart" asp-route-productid="@item.ProductId">
+                                    <button class="remove-item" product-id="@item.ProductId"><i class="fa fa-trash"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="cart-body-padding"></div></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <br />
+        <br />
+
+        <div class="row-viewcart">
+            <div class="row-viewcart">
+                <div class="cart-checkout">
+                    <p class="cart-total-amt" id="cart-total">Please pay: @totalPrice</p>
+                    <div><a asp-area="" asp-controller="Order" asp-action="Checkout"><input type="button" class="addcart-button" value="CHECK OUT"></a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

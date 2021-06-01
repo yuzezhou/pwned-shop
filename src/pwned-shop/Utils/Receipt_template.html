@@ -1,0 +1,48 @@
+﻿<html>
+<head>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <h1>
+        Thank you for your purchase!
+    </h1>
+    <p>Here's your purchase receipt for Order no: <b>@Model.OrderId</b></p>
+    <table>
+        <thead>
+            <tr>
+                <th width="60%">Product Details</th>
+                <th style="text-align:center" width="12%">Price</th>
+                <th style="text-align:center" width="10%">Quantity</th>
+                <th style="text-align:center" width="10%">Sub-Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in @Model.ReceiptItems)
+            {
+            <tr style="background-color:#f2f2f2;">
+                <td>
+                    <p><b>@item.ProductName</b></p>
+                    <p>Activation Code:</p>
+                    @foreach (var code in item.ActivationCodes)
+                    {
+                    <p>@code</p>
+                    }
+                </td>
+                <td style="text-align:center">@((item.UnitPrice*(1-item.Discount)).ToString("S$ 0.00"))</td>
+                <td style="text-align:center">@item.Qty</td>
+                <td style="text-align:center">@((item.Qty * item.UnitPrice*(1 - item.Discount)).ToString("S$ 0.00"))</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    <br />
+    <br />
+    <div>
+        <p><b>Total Amount: @Model.TotalPrice.ToString("S$ 0,0.00")</b></p>
+    </div>
+    <p>Happy gaming!</p>
+    <div class="container-full">
+        &copy; PWNED Shop - Since 2021
+    </div>
+</body>
+</html>

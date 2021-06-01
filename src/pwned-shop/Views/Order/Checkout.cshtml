@@ -1,0 +1,112 @@
+@using pwned_shop.ViewModels
+
+@{
+    ViewData["Title"] = "Checkout";
+
+    var receiptView = (IEnumerable<IGrouping<string, CheckOutViewModel>>)ViewData["RecieptView"];
+
+    float totalPrice = 0;
+
+    foreach (var r in receiptView)
+    {
+        totalPrice += (r.First().UnitPrice * r.First().Qty) * (1 - r.First().Discount);
+    }
+}
+
+<div><img src="~/bannerImg/offersbanner.png" style="width:100%;"></div>
+<br>
+<a class="continue-shopping" style="float:right;" asp-area="" asp-controller="Product" asp-action="Index">Continue Shopping</a>
+<br>
+<br>
+<center>
+    <h1 class="sc-heading">
+        Thank you for your purchase!
+        <br />
+        Enjoy Gaming <img src="~/bannerImg/video-game-resize.png" style="height: 100%" ; />
+    </h1>
+</center>
+<br>
+<br>
+<div class="container-fluid">
+    <div>
+        <div>
+            <table>
+                <thead class="cart-table-heading-row">
+                    <tr>
+                        <th width="29%">Product Details</th>
+                        <th width="46%"></th>
+                        <th style="text-align:center" width="7%">Price</th>
+                        <th style="text-align:center" width="7%">Quantity</th>
+                        <th style="text-align:center" width="11%">Total</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td><div class="cart-body-padding"></div></td>
+                    </tr>
+
+                    @foreach (var item in receiptView)
+
+                    {
+                        <tr class="cart-orderline" style="background-color:#f2f2f2;">
+                    <td class="cart-product-images">
+                        <img src=@item.First().ImgURL>
+                    </td>
+
+                    <td class="cart-pro-details">
+                        <div style="margin: 0 0 0 15px;">
+                            <p class="cart-product-name">@item.First().ProductName</p>
+                            <p class="cart-product-des">@item.First().ProductDesc</p>
+                            <br />
+                            <p class="cart-product-name">
+                                Activation Code:&nbsp;
+                                <select id="activation">
+                                    @foreach (var subItem in item)
+                                    {
+                                        <option>@subItem.ActivationCode</option>
+                                    }
+                                </select>
+                            </p>
+                        </div>
+                    </td>
+
+                    @if (item.First().Discount != 0)
+                    {
+                        <td class="cart-unit-price" style="text-align:center">
+                            <p class="cart-new-price">@((item.First().UnitPrice * (1 - item.First().Discount)).ToString("S$ 0.00"))</p>
+                            <p class="cart-cancelled-price"><strike>@((item.First().UnitPrice).ToString("S$ 0.00"))</strike></p>
+                        </td>
+                    }
+
+                    else
+                    {
+                        <td class="cart-unit-price" style="text-align:center">
+                            @((item.First().UnitPrice * (1 - item.First().Discount)).ToString("S$ 0.00"))
+                        </td>
+                    }
+
+                    <td class="cart-subtotal" style="text-align:center">@item.First().Qty</td>
+
+                    <td class="cart-subtotal" style="text-align:center">@((item.First().Qty * item.First().UnitPrice * (1-item.First().Discount) ).ToString("S$ 0.00"))</td>
+                </tr>
+
+                        <tr>
+                            <td><div class="cart-body-padding"></div></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <br />
+        <br />
+        <div class="row-viewcart">
+            <div class="row-viewcart">
+                <div class="cart-checkout">
+                    <p class="cart-total-amt" id="cart-total">Total Amount: @totalPrice.ToString("S$ 0.00")</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

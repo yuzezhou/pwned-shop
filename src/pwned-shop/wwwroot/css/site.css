@@ -1,0 +1,396 @@
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+.topnav {
+    background-color: #FFF0F0;
+    width: 100%;
+    height: 70px;
+}
+
+.bottomnav {
+    background-color: #FFFFFF;
+    width: 100%;
+    height: 50px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 10px;
+    float: right;
+}
+
+ul.navbottom {
+    margin: 5px;
+}
+
+li, a.helloname {
+    float: left;
+}
+
+a {
+    color: #333333;
+    font-family: Arial;
+    font-weight: bold;
+}
+
+a.nav-link:hover {
+    color: #333333;
+}
+
+a.nav-link {
+    font-size: 24px;
+}
+
+ul.navbottom a.nav-link, a.helloname {
+    font-size: 18px;
+}
+
+a.helloname {
+    margin: 12px 0px 0px 10px;
+}
+
+.row, .row-viewcart {
+    margin: 0 auto;
+    display: flex;
+}
+
+.row {
+    padding-bottom: 50px;
+}
+
+.product-card, .emptycart, .cart-checkout {
+    text-align: center;
+    padding: 2%;
+    flex-grow: 1;
+    flex-basis: 25%;
+}
+
+.product-card {
+    box-shadow: 0px 2px 2px 2px rgba(0, 0, 0, 0.15);
+    width: 350px;
+    max-width: 350px;
+    height: 500px;
+    max-height: 500px;
+}
+
+.emptycart {
+    width: 450px;
+    max-width: 450px;
+    height: 500px;
+    max-height: 500px;
+}
+
+.cart-checkout {
+    width: 450px;
+    max-width: 450px;
+    height: 200px;
+    max-height: 200px;
+}
+
+.product-images {
+    padding: 15px 10px 0px 12px ;
+    height: 160px;
+    width: 335px;
+    display: flex;
+    flex-flow: nowrap;
+    object-fit: contain;
+}
+
+.product-info {
+    height: 170px;
+    max-height: 170px;
+}
+
+.gallery-pricing {
+    height: 70px;
+    max-height: 70px;
+}
+
+.gamename, .gamedes, .price, .cancelled-price, .empty-sc-text {
+    color: #000000;
+    font-family: Arial;
+    text-align: center;
+}
+
+.new-price {
+    color: #C10000;
+    font-family: Arial;
+    text-align: center;
+}
+
+.gamename {
+    font-weight: bold;
+    font-size: 24px;
+    padding: 8px;
+    margin: 6px;
+}
+
+.gamedes, .empty-sc-text {
+    font-size: 18px;
+    line-height: normal;
+}
+
+.gamedes {
+    height: 150px;
+    max-height: 150px;
+    margin: -10px 10px 0px 10px;
+}
+
+.price, .new-price {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.cancelled-price {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.addcart-button, .checkout-button {
+    background-color: #C10000;
+    border: none;
+    outline: none;
+    text-align: center;
+    cursor: pointer;
+    font-family: Arial;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 24px;
+    height: 66px;
+}
+
+.addcart-button {
+    width: 80%;
+}
+
+.checkout-button {
+    width: 20%;
+}
+
+.addcart-button:hover, .checkout-button:hover {
+    opacity: 0.5;
+    border: none;
+    outline: none;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    font-size: 16px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+
+.footer {
+    font-family: Arial;
+    font-size: 18px;
+    color: #333333;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border: none;
+    outline: none;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+}
+
+input[class="searchInput"] {
+    width: 95%;
+    height: 60px;
+    border: 3px solid #000000;
+    border-radius: 80px;
+    outline: 0px;
+}
+
+input[placeholder="Search title..."] {
+    font-family: Arial;
+    font-size: 24px;
+    color: #000000;
+    text-align: left;
+    padding: 14px 70px;
+    background-image: url(/bannerImg/searchicon.png);
+    background-repeat: no-repeat;
+    background-position: 30px 14px;
+}
+
+.sc-heading, a.continue-shopping, .cart-table-heading-row, .cart-total-amt {
+    color: #000000;
+    font-family: Arial;
+    font-weight: bold;
+}
+
+.sc-heading {
+    font-size: 36px;
+    margin: 30px 0px 0px 10px;
+}
+
+a.continue-shopping {
+    font-size: 18px;
+    text-decoration: underline;
+    padding-right: 30px;
+}
+
+.continue-shopping:hover {
+    color: #000000;
+    opacity: 0.5;
+}
+
+.cart-table-heading-row {
+    border-bottom: 3px solid;
+    border-top: 3px solid;
+    border-color: #000000;
+    font-size: 24px;
+}
+
+.cart-orderline {
+    height: 280px;
+    max-height: 280px;
+}
+
+.cart-body-padding {
+    padding: 12px;
+}
+
+.cart-product-name, .cart-product-des, .cart-subtotal, .cart-unit-price {
+    color: #000000;
+    font-size: 18px;
+    font-family: Arial;
+}
+
+.cart-cancelled-price, .cart-new-price {
+    font-size: 16px;
+    font-family: Arial;
+}
+
+.cart-cancelled-price {
+    color: #000000;
+}
+
+.cart-new-price {
+    color: #C10000;
+}
+
+.cart-product-name, .cart-subtotal, .cart-unit-price, .cart-new-price, .cart-cancelled-price {
+    font-weight: bold;
+}
+
+.cart-unit-price, .cart-new-price, .cart-cancelled-price {
+    margin: 0 0 0 10px;
+}
+
+.cart-product-images {
+    object-fit: contain;
+    margin: 30px 0 0 20px;
+    display: flex;
+    flex-flow: nowrap;
+    vertical-align: middle;
+}
+
+.cart-pro-details {
+    height: 220px;
+    max-height: 220px;
+    vertical-align: middle;
+}
+
+.remove-item, .remove-item:hover {
+    border: none;
+    outline:none;
+    margin: 0 0 0 5px;
+    margin-bottom: -20px;
+}
+
+.remove-item:hover {
+    opacity: 0.5;
+}
+
+.qty {
+    width: 40%;
+    margin: 0 20px;
+    border: 2px solid;
+    border-color: #8c8c8c;
+    text-align: center;
+}
+
+table {
+    border-collapse: collapse;
+    /*width: 80%;*/
+}
+
+th {
+    padding-right: 50px;
+    height: 70px;
+}
+
+.cart-total-amt {
+    font-size: 24px;
+    text-align: center;
+}
+
+@-webkit-keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@keyframes fadein {
+    from {
+        bottom: 0;
+        opacity: 0;
+    }
+
+    to {
+        bottom: 30px;
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes fadeout {
+    from {
+        bottom: 30px;
+        opacity: 1;
+    }
+
+    to {
+        bottom: 0;
+        opacity: 0;
+    }
+}

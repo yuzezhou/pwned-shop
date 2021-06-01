@@ -1,0 +1,81 @@
+﻿  @using pwned_shop.ViewModels
+@{
+    ViewData["Title"] = "Purchase History";
+    /* List<OrderDetail> pastPurchases = (List<OrderDetail>)ViewData["pastPurchases"];
+    IEnumerable<int> orderIds = pastPurchases.Select(x => x.OrderId).Distinct();*/
+
+    var orders = (List<OrderViewModel>)ViewData["OVMList"];
+    var c = orders.OrderByDescending(o => o.Timestamp).GroupBy(o => new
+    {
+        o.ImgURL,
+        o.ProductName,
+        o.ProductDesc,
+        o.Timestamp
+    });
+}
+
+<br>
+<h1 class="sc-heading">Purchase History</h1>
+<br>
+<div class="container-fluid">
+    <div>
+        <div>
+            <table>
+                <thead class="cart-table-heading-row">
+                    <tr>
+                        <th width="28%">Product Details</th>
+                        <th width="45%"></th>
+                        <th style="text-align:center" width="5%">Quantity</th>
+                        <th style="text-align:center" width="15%">Purchased Date</th>
+                        <th width="7%"></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td><div class="cart-body-padding"></div></td>
+                    </tr>
+
+                    @foreach (var dud in c)
+                    {
+                        <tr class="cart-orderline" style="background-color:#f2f2f2;">
+                            <td class="cart-product-images">
+                                <img src=@dud.Key.ImgURL class="image" />
+                            </td>
+
+                            <td class="cart-pro-details">
+                                <div style="margin: 0 0 0 15px;">
+                                    <p class="cart-product-name">@dud.Key.ProductName</p>
+                                    <p class="cart-product-des">@dud.Key.ProductDesc</p>
+                                    <br />
+                                    <p class="cart-product-name">
+                                        Activation Code:&nbsp;
+                                        <select id="activation">
+                                            @foreach (var activationCode in dud)
+                                            {
+                                                <option>@activationCode.ActivationCode</option>
+                                            }
+                                        </select>
+                                    </p>
+                                </div>
+                            </td>
+
+                            <td style="text-align: center"><p class="cart-product-name">@dud.Count()</p></td>
+                            <td style="text-align: center">
+                                <p class="cart-product-name">@dud.Key.Timestamp.ToString("dd MMM yyyy")</p>
+                            </td>
+
+                            <td style="padding-right:20px;">
+                                <input type="button" name="button" class="button" style="margin-left:15px" value="Download" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="cart-body-padding"></div></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,5 @@
+PromoCode,StartDate,EndDate,Remarks,DiscountPercent
+CNY10,14/1/2020,14/2/2020,Happy CNY,0.1
+GSS30,1/6/2020,30/6/2020,Great Singapore Sale,0.3
+LAB01,1/5/2021,1/5/2021,Labour Day Promo,0.15
+SUR88,13/4/2021,29/4/2021,Surprise Sales,0.2
