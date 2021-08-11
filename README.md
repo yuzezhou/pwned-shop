@@ -3,6 +3,7 @@
 Pwned Shop is an online shopping website which sells Steam games. The website is currently hosted on Azure App Service and can be accessed here<a href='https://pwned-shop.azurewebsites.net/'>here</a>
 
 The website might take around 5s to load since the instance is running on free plan.
+
 This procedure is jointly completed by the National University of Singapore ISS SA52team9
 
 # MacOS SQL server configuration
